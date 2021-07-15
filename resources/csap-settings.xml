@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings
+	xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd"
+	xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+	<localRepository>${user.home}/.m2/repository</localRepository>
+
+	<servers>
+
+		<server>
+			<id>sensus-artifactory-community</id>
+			<username>pnightingale</username>
+			<password>AP8GaJU7UMKyWd7hpAQEPWaWBwv</password>
+		</server>
+		<server>
+			<id>csap-release-repo</id>
+			<username>pnightingale</username>
+			<password>AP8GaJU7UMKyWd7hpAQEPWaWBwv</password>
+		</server>
+
+		<server>
+			<id>csap-snapshot-repo</id>
+			<username>pnightingale</username>
+			<password>AP8GaJU7UMKyWd7hpAQEPWaWBwv</password>
+		</server>
+
+	</servers>
+	<mirrors>
+		<mirror>
+			<id>sensus-artifactory-community</id>
+			<mirrorOf>*</mirrorOf>
+			<url>http://devops-prod01.lab.sensus.net:8081/artifactory/maven</url>
+		</mirror>
+	</mirrors>
+	<profiles>
+		<profile>
+			<id>sensus-artifactory-community</id>
+
+			<properties>
+				<csapReleaseUrl>http://devops-prod01.lab.sensus.net:8081/artifactory/csap-release</csapReleaseUrl>
+				<csapSnapUrl>http://devops-prod01.lab.sensus.net:8081/artifactory/csap-snapshots</csapSnapUrl>
+				<artifactoryCnameFqdn>sensus-artifactory-community.lab.sensus.net</artifactoryCnameFqdn>
+			</properties>
+
+			<repositories>
+				<repository>
+					<snapshots>
+						<enabled>true</enabled>
+						<updatePolicy>always</updatePolicy>
+					</snapshots>
+					<id>sensus-artifactory-community</id>
+					<name>central</name>
+					<url>http://central</url>
+					<releases>
+						<enabled>true</enabled>
+						<updatePolicy>always</updatePolicy>
+					</releases>
+				</repository>
+			</repositories>
+			<pluginRepositories>
+				<pluginRepository>
+					<id>central</id>
+					<url>http://central</url>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+					<releases>
+						<enabled>true</enabled>
+					</releases>
+				</pluginRepository>
+			</pluginRepositories>
+		</profile>
+
+		<!-- USED in java spring boot build manifest -->
+		<profile>
+			<id>jenkins-node-name-default</id>
+			<activation>
+				<property>
+					<name>!env.NODE_NAME</name>
+				</property>
+			</activation>
+			<properties>
+				<build.node>built-on-unofficial-host</build.node>
+			</properties>
+		</profile>
+
+		<profile>
+			<id>jenkins-node-name-from-env</id>
+			<activation>
+				<property>
+					<name>env.NODE_NAME</name>
+				</property>
+			</activation>
+			<properties>
+				<build.node>${env.NODE_NAME}</build.node>
+			</properties>
+		</profile>
+
+	</profiles>
+	<activeProfiles>
+		<activeProfile>sensus-artifactory-community</activeProfile>
+	</activeProfiles>
+</settings>
+
+

@@ -7,7 +7,7 @@
 	<localRepository>${user.home}/.m2/repository</localRepository>
 
 	<servers>
-
+<!--  
 		<server>
 			<id>sensus-artifactory-community</id>
 			<username>pnightingale</username>
@@ -23,6 +23,23 @@
 			<id>csap-snapshot-repo</id>
 			<username>pnightingale</username>
 			<password>AP8GaJU7UMKyWd7hpAQEPWaWBwv</password>
+		</server>
+-->
+		<server>
+			<id>sensus-artifactory-community</id>
+			<username>maven-write</username>
+      		<password>AP49zCvghotYBUH7u1mnFCNgyfR</password>
+		</server>
+		<server>
+			<id>csap-release-repo</id>
+			<username>maven-write</username>
+      		<password>AP49zCvghotYBUH7u1mnFCNgyfR</password>
+		</server>
+
+		<server>
+			<id>csap-snapshot-repo</id>
+			<username>maven-write</username>
+      		<password>AP49zCvghotYBUH7u1mnFCNgyfR</password>
 		</server>
 
 	</servers>

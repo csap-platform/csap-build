@@ -42,7 +42,7 @@ def setup(Map p) {
 	print_header "setup -  pipeline ${p}"
 
 	print_header "setup - java"
-	sh 'java --version'
+	sh 'java -version'
 	
 	
 	settingsFile = getAsFile('csap-settings.xml')

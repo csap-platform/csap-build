@@ -87,9 +87,9 @@ def call(Map pipelineParams) {
 
         tools {
             maven 'Maven_3.3.9'
-            jdk 'OpenJDK11U' 
+            jdk 'OpenJDK17_0_2' 
         }
-        // jdk 'OpenJDK11.28' 
+        // jdk 'OpenJDK11U' 
 
         stages {
             stage('Setup') {
